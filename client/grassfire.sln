@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grassfire", "grassfire.csproj", "{ED5D5C8D-4128-03DD-7ADF-00CD5ECC62C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grassfire.Plugins", "grassfire.Plugins.csproj", "{1B41639B-348F-BC63-C562-D73BB59C4F05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grassfire.Editor", "grassfire.Editor.csproj", "{DEA9A48D-BCBF-09D6-B415-E3CA4AF0C718}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED5D5C8D-4128-03DD-7ADF-00CD5ECC62C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED5D5C8D-4128-03DD-7ADF-00CD5ECC62C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED5D5C8D-4128-03DD-7ADF-00CD5ECC62C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED5D5C8D-4128-03DD-7ADF-00CD5ECC62C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B41639B-348F-BC63-C562-D73BB59C4F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B41639B-348F-BC63-C562-D73BB59C4F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B41639B-348F-BC63-C562-D73BB59C4F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B41639B-348F-BC63-C562-D73BB59C4F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA9A48D-BCBF-09D6-B415-E3CA4AF0C718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA9A48D-BCBF-09D6-B415-E3CA4AF0C718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA9A48D-BCBF-09D6-B415-E3CA4AF0C718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA9A48D-BCBF-09D6-B415-E3CA4AF0C718}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+{
+  "name": "grassfire-server",
+  "version": "1.0.0",
+  "description": "grassfire game server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "server",
+    "grassfire"
+  ],
+  "author": "Benjamin Kosten & Randolph Xia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "fast-simplex-noise": "^3.2.0",
+    "seedrandom": "^2.4.3",
+    "socket.io": "^2.0.4",
+    "ws": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.1"
+  }
+}
