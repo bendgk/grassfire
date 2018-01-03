@@ -9,7 +9,8 @@ Making that dream game...
 
 ### Setup
 1. Download nodejs
-2.     npm install --save socket.io
+2.
+    npm install --save socket.io
     npm install --save seedrandom
     npm install --save fast-simplex-noise
 3. Run start.bat
