@@ -13,9 +13,6 @@ public class GameController : MonoBehaviour {
     public GameObject map;
     private Transform MapT;
 
-    private int chunkX = 0;
-    private int chunkY = 0;
-
     void Start() {
         PlayerRB = player.GetComponent<Rigidbody>();
         MapT = map.GetComponent<Transform>();
@@ -27,49 +24,51 @@ public class GameController : MonoBehaviour {
     }
 
     void Update () {
+        /*
         if (PlayerRB.position.x >= MapT.position.x + (MapT.lossyScale.x * 5)) {
             PlayerRB.position = new Vector3(PlayerRB.position.x - MapT.position.x - (MapT.lossyScale.x * MapT.lossyScale.x / 2.0f) + 1, PlayerRB.position.y, PlayerRB.position.z);
-            chunkX++;
-            requestMap(chunkX, chunkY);
         }
 
         if (PlayerRB.position.x <= MapT.position.x - (MapT.lossyScale.x * 5)) {
             PlayerRB.position = new Vector3(PlayerRB.position.x + MapT.position.x + (MapT.lossyScale.x * MapT.lossyScale.x/2.0f) - 1, PlayerRB.position.y, PlayerRB.position.z);
-            chunkX--;
-            requestMap(chunkX, chunkY);
         }
 
         if (PlayerRB.position.z >= MapT.position.z + (MapT.lossyScale.z * 5)) {
             PlayerRB.position = new Vector3(PlayerRB.position.x, PlayerRB.position.y, PlayerRB.position.z - MapT.position.z - (MapT.lossyScale.z * MapT.lossyScale.z / 2.0f) + 1);
-            chunkY++;
-            requestMap(chunkX, chunkY);
         }
 
         if (PlayerRB.position.z <= MapT.position.z - (MapT.lossyScale.z * 5)) {
             PlayerRB.position = new Vector3(PlayerRB.position.x, PlayerRB.position.y, PlayerRB.position.z + MapT.position.z + (MapT.lossyScale.z * MapT.lossyScale.z / 2.0f) - 1);
-            chunkY--;
-            requestMap(chunkX, chunkY);
         }
+        */
     }
 
     public void drawMap(SocketIOEvent e) {
         //FindObjectOfType<MapDisplay>().DrawTexture(TextureGenerator.TextureFromHeightMap(JSONObjectTo2DFloat(e.data["noiseMap"])));
-
+        //print(e.data["colorMap"]);
         Color[] colorMap = JSONObjectToColorArray(e.data["colorMap"]);
         int width = (int)e.data["width"].n;
         int height = (int)e.data["height"].n;
+        //print(colorMap);
 
         FindObjectOfType<MapDisplay>().DrawTexture(TextureGenerator.TextureFromColorMap(colorMap, width, height));
+
+        //Testing move stuff
+        float x = e.data["players"][0]["x"].n;
+        float y = e.data["players"][0]["y"].n;
+        print(x + " " + y);
+        PlayerRB.position = new Vector3(x, 1, y);
     }
 
     private Color[] JSONObjectToColorArray(JSONObject o) {
         Color[] colorMap = new Color[o.list.Count];
+        //print(colorMap);
 
         for(int i = 0; i < colorMap.Length; i++) {
             Color tile = new Color(o[i]["r"].n, o[i]["g"].n, o[i]["b"].n, o[i]["a"].n);
             colorMap[i] = tile;
         }
-
+        //print("done");
         return colorMap;
     }
 
@@ -83,15 +82,5 @@ public class GameController : MonoBehaviour {
             }
         }
         return float2d;
-    }
-
-    private void requestMap(int x, int y) {
-        //print("----");
-        //print("x: " + x);
-        //print("y: " + y);
-        Dictionary<string, int> data = new Dictionary<string, int>();
-        data["x"] = x;
-        data["y"] = y;
-        socket.Emit("requestMap", new JSONObject(data));
     }
 }

@@ -16,5 +16,12 @@ module.exports = {
             this.b = color.b / 255.0
             this.a = 1
         }
+    },
+
+    Key: {
+        UP: "u",
+        DOWN: "d",
+        LEFT: "l",
+        RIGHT: "r"
     }
 }

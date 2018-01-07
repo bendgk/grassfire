@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SocketIO;
+
 
 public class PlayerMovement : MonoBehaviour {
+
+    private SocketIOComponent socket;
 
     //Controls
     public KeyCode up;
@@ -15,29 +19,36 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
 
     private Rigidbody rb;
+    Dictionary<string, string> data = new Dictionary<string, string>();
 
     private void Start() {
+        GameObject go = GameObject.Find("SocketIO");
+        socket = go.GetComponent<SocketIOComponent>();
+
         rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate() {
-        velocity = Vector3.zero;
-
         if(Input.GetKey(up)) {
-            velocity.z = speed;
+            move("u");
         }
 
         if (Input.GetKey(down)) {
-            velocity.z = -speed;
+            move("d");
         }
 
         if (Input.GetKey(left)) {
-            velocity.x = -speed;
+            move("l");
         }
 
         if (Input.GetKey(right)) {
-            velocity.x = speed;
+            move("r");
         }
-        rb.velocity = velocity;
+    }
+
+    private void move(string key) {
+        data["e"] = "movement";
+        data["key"] = key;
+        socket.Emit("player-action", new JSONObject(data));
     }
 }
