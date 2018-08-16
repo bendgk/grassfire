@@ -18,13 +18,15 @@ module.exports = {
 
             return this.chunks[[x, y]]
         }
+        
+        getPlayer(id) {
+            return this.players[id]
+        }
 
         addPlayer(player) {
-            console.log("shit1")
             this.players[player.id] = player
             var chunk = this.getChunk(player.x, player.y)
             chunk.addPlayer(player)
-            console.log("shit4")
         }
 
         removePlayer(player) {
